@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-
-namespace CalculateurAge;
+﻿namespace CalculateurAge;
 
 public partial class MainPage : ContentPage
 {
@@ -9,12 +7,12 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
-    private async void OnCalculerClicked(object sender, EventArgs e)
+    private async void OnCalculerClicked(object? sender, EventArgs e)
     {
         // Vérification du nom
         if (string.IsNullOrWhiteSpace(entryNom.Text))
         {
-            await DisplayAlert(
+            await DisplayAlertAsync(
                 "Erreur",
                 "Entrez un nom",
                 "OK");
@@ -23,11 +21,11 @@ public partial class MainPage : ContentPage
         }
 
         // Vérification de la date
-        DateTime dateNaissance = pickerDate.Date;
+        DateTime dateNaissance = pickerDate.Date ?? DateTime.Today;
 
         if (dateNaissance.Date > DateTime.Today)
         {
-            await DisplayAlert(
+            await DisplayAlertAsync(
                 "Erreur",
                 "La date de naissance ne peut pas être dans le futur.",
                 "OK");
