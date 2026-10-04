@@ -1,4 +1,7 @@
-﻿namespace CalculateurAge;
+﻿using System;
+using CalculateurAge.Views;
+
+namespace CalculateurAge;
 
 public partial class MainPage : ContentPage
 {
@@ -9,7 +12,6 @@ public partial class MainPage : ContentPage
 
     private async void OnCalculerClicked(object? sender, EventArgs e)
     {
-        // Vérification du nom
         if (string.IsNullOrWhiteSpace(entryNom.Text))
         {
             await DisplayAlertAsync(
@@ -20,8 +22,7 @@ public partial class MainPage : ContentPage
             return;
         }
 
-        // Vérification de la date
-        DateTime dateNaissance = pickerDate.Date ?? DateTime.Today;
+        DateTime dateNaissance = pickerDate?.Date ?? DateTime.Today;
 
         if (dateNaissance.Date > DateTime.Today)
         {
@@ -33,19 +34,14 @@ public partial class MainPage : ContentPage
             return;
         }
 
-        // Calcul de l'âge
         int age = DateTime.Today.Year - dateNaissance.Year;
 
-        // Si l'anniversaire n'est pas encore passé cette année
         if (dateNaissance.Date > DateTime.Today.AddYears(-age))
         {
             age--;
         }
 
-        // Affichage du résultat
-        lblResultat.Text =
-            $"{entryNom.Text}, vous avez {age} ans";
-
-        lblResultat.IsVisible = true;
+        await Shell.Current.GoToAsync(
+            $"{nameof(ResultatPage)}?nom={Uri.EscapeDataString(entryNom.Text)}&age={age}");
     }
 }

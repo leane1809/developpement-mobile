@@ -71,7 +71,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="views\" />
+	  <Compile Update="views\ResultatPage.xaml.cs">
+	    <DependentUpon>ResultatPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="views\ResultatPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
