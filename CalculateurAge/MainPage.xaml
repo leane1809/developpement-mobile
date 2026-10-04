@@ -7,6 +7,7 @@
     Title="Calculateur">
 
     <ScrollView>
+
         <VerticalStackLayout
             Padding="20"
             Spacing="12">
@@ -16,7 +17,7 @@
                 FontSize="16" />
 
             <Entry
-                x:Name="entryNom"
+                Text="{Binding Nom, Mode=TwoWay}"
                 Placeholder="Votre nom" />
 
             <Label
@@ -24,19 +25,19 @@
                 FontSize="16" />
 
             <DatePicker
-                x:Name="pickerDate" />
+                Date="{Binding DateNaissance}" />
 
             <Button
-                x:Name="btnCalculer"
                 Text="Calculer"
-                Clicked="OnCalculerClicked" />
+                Command="{Binding CalculerCommand}" />
 
             <Label
-                x:Name="lblResultat"
+                Text="{Binding Resultat}"
                 FontSize="20"
-                IsVisible="False" />
+                IsVisible="{Binding ResultatVisible}" />
 
         </VerticalStackLayout>
+
     </ScrollView>
 
 </ContentPage>
