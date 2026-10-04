@@ -13,6 +13,11 @@
             Spacing="12">
 
             <Label
+                Text="Calculateur d'âge"
+                FontSize="28"
+                HorizontalOptions="Center" />
+
+            <Label
                 Text="Nom"
                 FontSize="16" />
 
@@ -31,10 +36,27 @@
                 Text="Calculer"
                 Command="{Binding CalculerCommand}" />
 
+            <Button
+                Text="Effacer"
+                Command="{Binding EffacerCommand}" />
+
             <Label
                 Text="{Binding Resultat}"
                 FontSize="20"
+                HorizontalOptions="Center"
                 IsVisible="{Binding ResultatVisible}" />
+
+            <Label
+                Text="{Binding Message}"
+                FontSize="20"
+                HorizontalOptions="Center"
+                IsVisible="{Binding MessageVisible}" />
+
+            <Label
+                Text="{Binding JoursAvantAnniversaire}"
+                FontSize="16"
+                HorizontalOptions="Center"
+                IsVisible="{Binding JoursVisible}" />
 
         </VerticalStackLayout>
 
